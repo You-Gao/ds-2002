@@ -1,5 +1,4 @@
 -- SQL Exercises (With Answers)
--- Assuming I can assume the tables and column names? (I got sick w/ covid)
 
 -- 1. Retrieve all students who enrolled in 2023.
  SELECT * FROM enrollments WHERE YEAR(EnrollmentDate) = 2023;
@@ -24,6 +23,7 @@ SELECT s.FirstName, s.LastName, c.CourseName
  JOIN courses c ON e.CourseID = c.CourseID;
 
 -- 7. List all students and their courses, ensuring students without courses are included (LEFT JOIN).
+-- is the same query as above cause all students are enrolled in a course
 SELECT s.FirstName, s.LastName, c.CourseName
  FROM students s 
  LEFT JOIN enrollments e ON s.StudentID = e.StudentID
