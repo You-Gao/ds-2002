@@ -1,0 +1,31 @@
+id,hero_id,villain_id,outcome
+1,1,10,Villain Wins
+2,9,3,Hero Wins
+3,8,1,Draw
+4,5,4,Villain Wins
+5,1,7,Hero Wins
+6,2,8,Villain Wins
+7,9,8,Hero Wins
+8,3,2,Hero Wins
+9,7,5,Hero Wins
+10,3,1,Draw
+11,1,8,Villain Wins
+12,2,1,Draw
+13,8,9,Hero Wins
+14,8,1,Draw
+15,6,10,Draw
+16,1,1,Villain Wins
+17,8,3,Draw
+18,6,3,Villain Wins
+19,4,8,Villain Wins
+20,3,4,Hero Wins
+21,8,1,Draw
+22,4,9,Draw
+23,3,9,Draw
+24,8,9,Villain Wins
+25,2,5,Draw
+26,3,7,Draw
+27,10,3,Draw
+28,3,8,Draw
+29,3,5,Hero Wins
+30,5,5,Hero Wins
