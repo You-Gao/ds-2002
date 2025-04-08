@@ -19,11 +19,17 @@ def chat():
         message = data.get("message")
         if "cook" in message:
             meal = message.split("cook")[-1].strip()
+            
+            local_response = local_instructions(meal)
+            if local_response["title"] != "Recipe not found":
+                return jsonify({"response": local_response})
+            
             chatbot_response = chatbot_instructions(meal)
             response = json.loads(chatbot_response)
             print(response)
             return jsonify({"response": response})
         return jsonify({"response": "Please provide a meal to cook."})
+    
     return render_template("chat.html")
 
 def chatbot_instructions(meal_str):
@@ -55,13 +61,22 @@ def instructions(recipe_id):
     response = requests.get(url, params=requests_params).json()
     return response
 
-def get_recipe():
-    # params = ?number ?api_key
-    url = "https://api.spoonacular.com/recipes/random"
-    requests_params = {
-        "number": 10,
-        "apiKey": API_KEY,
-    }
-    response = requests.get(url, params=requests_params)
-    print(response.json())
-    return response.json()
+def local_instructions(meal_str):
+    import pandas as pd
+    recipes = pd.read_csv("recipes.csv")
+    similar_recipes = recipes[recipes["Title"].str.contains(meal_str, case=False)]
+    if not similar_recipes.empty:
+        recipe = similar_recipes.iloc[0]
+        return {
+            "title": recipe["Title"],
+            "ingredients": recipe["Cleaned_Ingredients"].split(", "),
+            "instructions": recipe["Instructions"].split(". "),
+            "tips": ["Use fresh ingredients", "Adjust seasoning to taste"]
+        }
+    else:
+        return {
+            "title": "Recipe not found",
+            "ingredients": [],
+            "instructions": [],
+            "tips": []
+        }
