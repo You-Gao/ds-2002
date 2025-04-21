@@ -1,0 +1,8 @@
+Quick Docs:
+
+API route is at /api/v1/time
+Parameters:
+- capital: string (optional) - The capital city to get the time for. If not provided, it will use the default capital.
+- secret: string (optional) - The secret key for authentication. If not provided, it will use the default secret.
+
+Example http://34.122.237.172:8000/api/v1/time?capital=London&secret=[your_secret_key]
